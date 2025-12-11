@@ -34,6 +34,7 @@ const App = () => {
       console.log("supabase error",error);
     }else{
       setAddToDo((prev) => [...prev,data[0]]);
+      setNewTodo("")
     }
     console.log("Inserted response:", JSON.stringify(data));
 
@@ -70,16 +71,16 @@ const App = () => {
     <>
       <div className='flex flex-col gap-3 border h-screen items-center justify-center'>
       <div className='flex gap-4 '>
-        <input onChange={(e) => setNewTodo(e.target.value)} value={newTodo} className='rounded px-4 py-2 text-lg outline-0 border-0 bg-amber-200' type="text" placeholder='enter todo..' />
+        <input onChange={(e) => setNewTodo(e.target.value)} value={newTodo} className='rounded  px-4 py-2 text-lg outline-0 border-0 bg-amber-200' type="text" placeholder='enter todo..' />
         <button onClick={createToDo} className='rounded-xl bg-green-500 px-4 py-2 text-md cursor-pointer text-white '>create</button>
       </div>
       {console.log("addToDo:", addToDo)}
 
-      <ul className="flex flex-col justify-start w-72 gap-2">
+      <ul className="flex flex-col justify-start  gap-2">
   {addToDo.map((todo) => {
     return (
-      <li key={todo.id} className="flex  gap-2">
-        <p className="px-4 py-2 border rounded bg-blue-500 text-white text-lg">
+      <li key={todo.id} className="flex flex-wrap gap-2">
+        <p className="px-4 py-2 border  text-center rounded bg-blue-500 text-white text-lg">
           {todo.name}
         </p>
 
